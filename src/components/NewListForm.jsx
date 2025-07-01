@@ -7,12 +7,19 @@ import { motion } from "framer-motion";
 const NewListForm = () => {
   const [listName, setListName] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isShaking, setIsShaking] = useState(false);
 
   const createList = useTodoStore((state) => state.createList);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!listName.trim()) return;
+
+    if (!listName.trim()) {
+      // Trigger rocking shake animation for empty input
+      setIsShaking(true);
+      setTimeout(() => setIsShaking(false), 800);
+      return;
+    }
 
     const success = createList(listName.trim());
     if (success) {
@@ -27,20 +34,41 @@ const NewListForm = () => {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className="mb-4 flex items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 p-3 shadow-sm transition-all duration-300 hover:cursor-pointer hover:border-neutral-300 hover:shadow-md dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:shadow-lg"
+      className={`mb-4 flex items-center justify-center rounded-lg border p-3 shadow-sm transition-all duration-300 hover:cursor-pointer hover:shadow-md ${
+        isShaking
+          ? "border-red-400 bg-red-50 dark:border-red-500 dark:bg-red-900/20"
+          : "border-neutral-200 bg-neutral-50 hover:border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600"
+      } dark:hover:shadow-lg`}
       animate={
-        isAnimating
+        isShaking
           ? {
-              scale: [1, 1.05, 1],
-              boxShadow: [
-                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-                "0 0 0 2px rgb(34 197 94 / 0.5), 0 4px 6px -1px rgb(0 0 0 / 0.1)",
-                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+              rotate: [0, -14, 14, -12, 12, -10, 10, 0],
+              transformOrigin: [
+                "20% 20%", // top left
+                "80% 80%", // bottom right
+                "20% 20%", // top left
+                "80% 80%", // bottom right
+                "20% 20%", // top left
+                "80% 80%", // bottom right
+                "50% 50%", // center
+                "50% 50%", // center
               ],
             }
-          : {}
+          : isAnimating
+            ? {
+                scale: [1, 1.05, 1],
+                boxShadow: [
+                  "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+                  "0 0 0 2px rgb(34 197 94 / 0.5), 0 4px 6px -1px rgb(0 0 0 / 0.1)",
+                  "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+                ],
+              }
+            : {}
       }
-      transition={{ duration: 0.6, ease: "easeInOut" }}
+      transition={{
+        duration: isShaking ? 0.5 : 0.4,
+        ease: isShaking ? "easeInOut" : "easeInOut",
+      }}
     >
       <div className="flex w-full items-center justify-center">
         <input

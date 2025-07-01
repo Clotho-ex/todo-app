@@ -30,7 +30,7 @@ const ListSidebar = () => {
             <span className="truncate">{name}</span>
             {name !== "default" && (
               <button
-                className="ml-2 rounded-full p-1.5 text-neutral-400 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:scale-110 hover:bg-red-100 hover:text-red-600 hover:shadow-sm dark:text-neutral-500 dark:hover:bg-red-900/20 dark:hover:text-red-400"
+                className="ml-2 rounded-full p-1.5 text-neutral-400 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:scale-110 hover:cursor-pointer hover:bg-red-100 hover:text-red-600 hover:shadow-sm dark:text-neutral-500 dark:hover:bg-red-900/20 dark:hover:text-red-400"
                 onClick={(e) => {
                   e.stopPropagation();
                   deleteList(name);
