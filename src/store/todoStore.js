@@ -35,7 +35,7 @@ export const useTodoStore = create(
           lists: {
             ...state.lists,
             [currentList]: (state.lists[currentList] || []).map((todo) =>
-              todo.id === id ? { ...todo, completed: !todo.completed } : todo
+              todo.id === id ? { ...todo, completed: !todo.completed } : todo,
             ),
           },
         }));
@@ -47,7 +47,7 @@ export const useTodoStore = create(
           lists: {
             ...state.lists,
             [currentList]: (state.lists[currentList] || []).filter(
-              (todo) => todo.id !== id
+              (todo) => todo.id !== id,
             ),
           },
         }));
@@ -59,20 +59,26 @@ export const useTodoStore = create(
           lists: {
             ...state.lists,
             [currentList]: (state.lists[currentList] || []).filter(
-              (todo) => !todo.completed
+              (todo) => !todo.completed,
             ),
           },
         }));
       },
 
       setCurrentList: (listName) => set({ currentList: listName }),
-      createList: (listName) =>
+      createList: (listName) => {
+        const { lists } = get();
+        if (lists[listName]) {
+          return false; // List already exists
+        }
         set((state) => ({
           lists: {
             ...state.lists,
-            [listName]: state.lists[listName] || [],
+            [listName]: [],
           },
-        })),
+        }));
+        return true; // List created successfully
+      },
 
       deleteList: (listName) => {
         const newLists = { ...get().lists };
@@ -100,7 +106,7 @@ export const useTodoStore = create(
           todos = todos.filter(
             (todo) =>
               todo.text.toLowerCase().includes(q) ||
-              todo.tags.some((tag) => tag.toLowerCase().includes(q))
+              todo.tags.some((tag) => tag.toLowerCase().includes(q)),
           );
         }
         return todos;
@@ -119,6 +125,6 @@ export const useTodoStore = create(
     }),
     {
       name: "todo-storage",
-    }
-  )
+    },
+  ),
 );

@@ -1,9 +1,11 @@
-import LandingPage from "./components/LandingPage";
+import ListSidebar from "./components/ListSidebar";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
-      <LandingPage />
+      <Toaster position="bottom-center" />
+      <ListSidebar />
     </>
   );
 }
