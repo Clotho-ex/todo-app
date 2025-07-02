@@ -34,15 +34,15 @@ const NewListForm = () => {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className={`mb-4 flex items-center justify-center rounded-lg border p-3 shadow-sm transition-all duration-300 hover:cursor-pointer hover:shadow-md ${
+      className={`mb-3 flex items-center gap-2 rounded-md border p-1 shadow-sm transition-all duration-300 dark:hover:border-neutral-300 ${
         isShaking
           ? "border-red-400 bg-red-50 dark:border-red-500 dark:bg-red-900/20"
-          : "border-neutral-200 bg-neutral-50 hover:border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600"
-      } dark:hover:shadow-lg`}
+          : "border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:focus-within:border-neutral-600 dark:focus-within:ring-neutral-600"
+      }`}
       animate={
         isShaking
           ? {
-              rotate: [0, -14, 14, -12, 12, -10, 10, 0],
+              rotate: [0, -40, 40, -20, 20, -10, 10, 0],
               transformOrigin: [
                 "20% 20%", // top left
                 "80% 80%", // bottom right
@@ -67,22 +67,20 @@ const NewListForm = () => {
       }
       transition={{
         duration: isShaking ? 0.5 : 0.4,
-        ease: isShaking ? "easeInOut" : "easeInOut",
+        ease: "easeInOut",
       }}
     >
-      <div className="flex w-full items-center justify-center">
-        <input
-          className="w-full border-none bg-transparent text-neutral-900 placeholder-neutral-500 outline-none focus:ring-0 dark:text-neutral-100 dark:placeholder-neutral-400"
-          autoFocus
-          type="text"
-          placeholder="New List"
-          value={listName}
-          onChange={(e) => setListName(e.target.value)}
-        />
-      </div>
+      <input
+        className="flex-1 rounded-md border-0 bg-transparent px-2 py-1.5 text-sm placeholder-neutral-400 focus:ring-0 focus:outline-none dark:text-neutral-200 dark:placeholder-neutral-500"
+        autoFocus
+        type="text"
+        placeholder="Give your list a name"
+        value={listName}
+        onChange={(e) => setListName(e.target.value)}
+      />
       <button
         type="submit"
-        className="ml-2 rounded-full p-1.5 text-neutral-600 transition-all duration-300 hover:scale-110 hover:bg-neutral-200 hover:text-neutral-800 hover:shadow-sm dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-200"
+        className="cursor-pointer rounded-full p-1.5 text-neutral-600 transition-all duration-300 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-200"
       >
         <PlusCircleIcon className="h-5 w-5" />
       </button>
