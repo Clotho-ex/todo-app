@@ -1,4 +1,5 @@
 import { useTodoStore } from "../store/todoStore";
+import { motion } from "framer-motion";
 
 const FILTERS = ["all", "active", "completed"];
 
@@ -7,19 +8,36 @@ const TodoFilter = () => {
   const setFilter = useTodoStore((state) => state.setFilter);
 
   return (
-    <div className="flex justify-center gap-4 text-neutral-500 dark:text-neutral-200">
+    <div className="flex justify-center gap-1 text-neutral-500 dark:text-neutral-200">
       {FILTERS.map((filterOption) => (
-        <button
+        <motion.button
           key={filterOption}
           onClick={() => setFilter(filterOption)}
-          className={`rounded-md px-2 py-1 cursor-pointer text-center text-sm font-medium transition-colors hover:bg-neutral-200 hover:text-neutral-800 dark:hover:bg-neutral-700 dark:hover:text-neutral-200 ${
+          className={`relative cursor-pointer rounded-md px-3 py-1 text-center text-sm font-medium transition-colors hover:text-neutral-800 dark:hover:text-neutral-200 ${
             filter === filterOption
-              ? "bg-neutral-200 text-neutral-800 dark:bg-neutral-700 dark:text-neutral-200"
-              : "bg-neutral-100 dark:bg-neutral-800"
+              ? "text-neutral-800 dark:text-neutral-200"
+              : "text-neutral-500 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800"
           }`}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.3 }}
         >
-          {filterOption.charAt(0).toUpperCase() + filterOption.slice(1)}
-        </button>
+          {filter === filterOption && (
+            <motion.div
+              className="absolute inset-0 rounded-md bg-neutral-200 dark:bg-neutral-700"
+              layoutId="activeFilter"
+              initial={false}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+              }}
+            />
+          )}
+          <span className="relative z-10">
+            {filterOption.charAt(0).toUpperCase() + filterOption.slice(1)}
+          </span>
+        </motion.button>
       ))}
     </div>
   );
