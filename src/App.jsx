@@ -8,7 +8,7 @@ function App() {
   const currentList = useTodoStore((state) => state.currentList);
 
   return (
-    <div className="grid h-screen grid-cols-1 overflow-hidden bg-neutral-50 lg:grid-cols-[256px_1fr] dark:bg-neutral-950">
+    <div className="grid h-screen grid-cols-1 overflow-hidden bg-neutral-50 lg:grid-cols-[256px_1fr] dark:bg-neutral-950 font-geist">
       <Toaster
         position="bottom-center"
         toastOptions={{
@@ -40,8 +40,8 @@ function App() {
 
       {/* Main content area */}
       <main className="m-3 flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 p-4 shadow-lg lg:col-start-2 dark:border-neutral-700">
-        <div className="mx-auto flex h-full w-full max-w-4xl flex-col">
-          <h1 className="mb-4 flex-shrink-0 text-center text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+        <div className="mx-auto flex h-full w-full max-w-full flex-col">
+          <h1 className="mb-4 flex-shrink-0 text-center text-2xl font-semibold tracking-tight text-neutral-600 dark:text-neutral-100">
             {currentList}
           </h1>
           <TodoPanel />

@@ -57,11 +57,11 @@ const AddTodoForm = () => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="What needs to get done?"
-        className="flex-1 rounded-md border-0 bg-transparent px-2 py-1.5 text-sm placeholder-neutral-400 focus:ring-0 focus:outline-none dark:text-neutral-200 dark:placeholder-neutral-500"
+        className="ml-1 flex-1 rounded-md border-0 bg-transparent py-1.5 text-sm placeholder-neutral-400 focus:ring-0 focus:outline-none dark:text-neutral-200 dark:placeholder-neutral-500"
       />
       <button
         type="submit"
-        className="ml-2 cursor-pointer rounded-full p-1.5 text-neutral-600 transition-all duration-300 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-200"
+        className="cursor-pointer rounded-full p-1.5 text-neutral-600 transition-all duration-300 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-200"
       >
         <PlusCircleIcon className="h-5 w-5" />
       </button>

@@ -28,8 +28,8 @@ const TodoItemsList = () => {
 
   if (todos.length === 0) {
     return (
-      <div className="py-6 text-center">
-        <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
+      <div className="flex justify-center items-center h-full text-center">
+        <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400 font-geist">
           {filter === "all" && todos.length === 0
             ? "No tasks here. Add one!"
             : filter === "completed" && todos.length === 0
