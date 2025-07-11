@@ -61,7 +61,7 @@ const ListSidebar = () => {
         </button>
 
         <div className="flex-shrink-0 p-4">
-          <h2 className="mb-7 mt-4 text-center text-lg font-bold text-neutral-600 dark:text-neutral-200">
+          <h2 className="mt-4 mb-7 text-center text-lg font-bold text-neutral-600 dark:text-neutral-200">
             Just Do It
           </h2>
           <NewListForm />
@@ -80,7 +80,7 @@ const ListSidebar = () => {
                 }`}
               >
                 <span className="truncate">{name}</span>
-                {name !== "default" && (
+                {name !== "Home" && (
                   <button
                     className="cursor-pointer rounded-full p-1 text-neutral-400 transition-all duration-100 hover:scale-115 hover:bg-red-100 hover:text-red-600 hover:shadow-sm dark:text-neutral-500 dark:hover:bg-red-900/20 dark:hover:text-red-400"
                     onClick={(e) => {

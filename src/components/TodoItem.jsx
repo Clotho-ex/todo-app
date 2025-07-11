@@ -6,7 +6,7 @@ const TodoItem = ({ todo }) => {
   const deleteTodo = useTodoStore((state) => state.deleteTodo);
 
   return (
-    <li className="dark:hover:bg-neutral-750 mt-3 flex w-full items-center gap-2.5 rounded-md border border-neutral-200 bg-neutral-50 px-2 py-1.5 transition-colors duration-200 group-hover:bg-neutral-900 hover:bg-neutral-200 hover:text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:group-hover:bg-neutral-700">
+    <li className="dark:hover:bg-neutral-750 mt-3 flex w-full items-center gap-2.5 rounded-md border border-neutral-200 bg-neutral-50 px-2 py-1.5 transition-colors duration-200 group-hover:bg-neutral-900 font-semibold hover:bg-neutral-200 hover:text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:group-hover:bg-neutral-700">
       <input
         className="h-4 w-4 cursor-pointer border-none border-neutral-300 bg-neutral-100 accent-green-500 focus:ring-0 dark:border-neutral-600 dark:bg-neutral-700"
         type="checkbox"

@@ -74,7 +74,7 @@ const NewListForm = () => {
         className="ml-1 flex-1 rounded-md border-0 bg-transparent py-1.5 text-sm placeholder-neutral-400 focus:ring-0 focus:outline-none dark:text-neutral-200 dark:placeholder-neutral-500"
         autoFocus
         type="text"
-        placeholder="Give your list a name"
+        placeholder="Add a new list..."
         value={listName}
         onChange={(e) => setListName(e.target.value)}
       />

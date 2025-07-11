@@ -4,8 +4,8 @@ import { persist } from "zustand/middleware";
 export const useTodoStore = create(
   persist(
     (set, get) => ({
-      lists: { default: [] },
-      currentList: "default",
+      lists: { Home: [] },
+      currentList: "Home",
       filter: "all",
       searchQuery: "",
 

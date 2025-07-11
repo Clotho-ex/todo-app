@@ -57,7 +57,7 @@ const AddTodoForm = () => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="What needs to get done?"
-        className="ml-1 flex-1 rounded-md border-0 bg-transparent py-1.5 text-sm placeholder-neutral-400 focus:ring-0 focus:outline-none dark:text-neutral-200 dark:placeholder-neutral-500"
+        className="ml-1 flex-1 rounded-md border-0 bg-transparent py-1.5 text-sm font-bold placeholder-neutral-400 focus:ring-0 focus:outline-none dark:text-neutral-200 dark:placeholder-neutral-500"
       />
       <button
         type="submit"
