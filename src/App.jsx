@@ -8,7 +8,7 @@ function App() {
   const currentList = useTodoStore((state) => state.currentList);
 
   return (
-    <div className="grid h-screen grid-cols-1 overflow-hidden bg-neutral-50 lg:grid-cols-[256px_1fr] dark:bg-neutral-950 font-geist">
+    <div className="font-geist grid h-screen grid-cols-1 overflow-hidden bg-neutral-50 lg:grid-cols-[256px_1fr] dark:bg-neutral-950">
       <Toaster
         position="bottom-center"
         toastOptions={{
